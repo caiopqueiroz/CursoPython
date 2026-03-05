@@ -1,0 +1,6 @@
+f = input('Frase qualquer: ')
+f2 = f.lower()
+v = f2.count('a')
+i = f2.find('a')
+t = f2.rfind('a')
+print(f'A letra "a" aparece {v} vezes durante a frase \n a primeira vez foi na posição de número {i} \n a última foi na posição de número {t}')
