@@ -1,0 +1,2 @@
+Esse é um texto que estou fazendo como forma de teste para verificar se o meu prototipo de programa buscador de arquivos funciona bem com textos mais extensos.
+Nesse teste, já estou utilizando pontuação e acentuação, não sei como o programa vai lidar com isso, bom, por isso estou testando.
