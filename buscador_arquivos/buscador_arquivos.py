@@ -23,6 +23,12 @@ for elemento in caminhos:
         for palavra in palavras:
             if palavra == '\n':
                 palavras.remove(palavra)
+
+            if '\n' in palavra:
+                if palavra in palavras:
+                    palavra_corrigida = palavra.split('\n')
+                    palavras.remove(palavra)
+                    palavras.append(palavra_corrigida[0])        
         
         for palavra in palavras:
             if comando in palavra:
