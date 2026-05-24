@@ -1,6 +1,11 @@
-caminhos = ['buscador_arquivos/teste.txt']
+#caminhos = ['buscador_arquivos/teste.txt', 'buscador_arquivos/outro_teste.txt', '../VisualizaçãoDados/Linguagem R.txt', '../../Caio/Ideias/Buscador de arquivos.txt']
+caminhos = ['buscador_arquivos/teste.txt', 'buscador_arquivos/outro_teste.txt']
 encontrou = False
 escrever_frase = False
+fim_linha = True
+ultima_linha = False
+linhas_arquivos = list()
+contador = 0
 print('Buscador de arquivos\n')
 comando = str(input('Digite a palavra que deseja buscar: '))
 for elemento in caminhos:
@@ -15,22 +20,11 @@ for elemento in caminhos:
 for elemento in caminhos:
     caminho = elemento
     arquivo = open(caminho, 'rt', encoding='utf-8')
-    titulo = caminho.split('/')
-    
-    for linha in arquivo:
-        palavras = linha.split(' ')
-        
-        for palavra in palavras:
-            if palavra == '\n':
-                palavras.remove(palavra)
+    contador_linhas = 0
+    linha_atual = 0
 
-            if '\n' in palavra:
-                if palavra in palavras:
-                    palavra_corrigida = palavra.split('\n')
-                    palavras.remove(palavra)
-                    palavras.append(palavra_corrigida[0])
-        
-        if len(palavras) == 0:
-            del palavras
-        else:
-            print(palavras)
+    for linha in arquivo:
+        contador_linhas += 1
+
+    linhas_arquivos.append(contador_linhas)
+print(linhas_arquivos)

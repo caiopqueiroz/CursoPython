@@ -2,7 +2,10 @@ caminhos = ['buscador_arquivos/teste.txt', 'buscador_arquivos/outro_teste.txt', 
 encontrou = False
 escrever_frase = False
 fim_linha = True
+ultima_linha = False
+linhas_arquivos = list()
 contador = 0
+contador_arquivo = -1
 print('Buscador de arquivos\n')
 comando = str(input('Digite a palavra que deseja buscar: '))
 for elemento in caminhos:
@@ -17,8 +20,26 @@ for elemento in caminhos:
 for elemento in caminhos:
     caminho = elemento
     arquivo = open(caminho, 'rt', encoding='utf-8')
-    
+    contador_linhas = 0
+    linha_atual = 0
+
     for linha in arquivo:
+        contador_linhas += 1
+
+    linhas_arquivos.append(contador_linhas)
+
+for elemento in caminhos:
+    caminho = elemento
+    arquivo = open(caminho, 'rt', encoding='utf-8')
+    contador_arquivo += 1
+    linha_atual = 0
+
+    for linha in arquivo:
+        linha_atual += 1
+        if linha_atual == linhas_arquivos[contador_arquivo]:
+            ultima_linha = True
+        else:
+            ultima_linha = False
         palavras = linha.split(' ')
         contador_palavras = 0
 
@@ -50,7 +71,16 @@ for elemento in caminhos:
                         frase.append(palavra)
                         contador += 1
 
-            if contador_palavras == len(palavras) or contador > 5:
+            if contador_palavras == len(palavras):
+                if ultima_linha == True:
+                    fim_linha = True
+                    if escrever_frase:
+                        print('Prévia: ', end='')
+                        for elemento in frase:
+                            print(f'\033[7;2m{elemento} \033[m', end='')
+                        print()
+                        escrever_frase = False
+            if contador > 5:
                 fim_linha = True
                 if escrever_frase:
                     print('Prévia: ', end='')
