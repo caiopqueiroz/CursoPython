@@ -122,12 +122,11 @@ while True:
                     if contador > 5:
                         fim_linha = True
                         if escrever_frase:
-                            # resolver problema de espaçamento entre as palavras, tentar adicionar todas à mesma string e exibir ela
-                            espacamento = -1
+                            frase_procurada = ''
                             for elemento in frase:
-                                espacamento += 1
-                                previa = fonte.render(elemento, True, branco)
-                                mostrar_previa = tela.blit(previa, (50 + 150 * espacamento, 250))
+                                frase_procurada += f' {elemento}'
+                            previa = fonte.render(frase_procurada, True, branco)
+                            mostrar_previa = tela.blit(previa, (50, 250))
                             #print('Prévia: ', end='')
                             #for elemento in frase:
                                 # escrever frase

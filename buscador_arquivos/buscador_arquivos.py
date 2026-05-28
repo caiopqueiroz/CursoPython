@@ -91,3 +91,5 @@ for elemento in caminhos:
 
 if not encontrou:
     print('\n\033[31mNão encontrei essa palavra em nenhum arquivo\033[m')
+
+segurador = int(input('Não digite nada: '))
